@@ -1,0 +1,9 @@
+Dif entre render y component
+
+-->Component no admite propiedades
+-->render sí
+--> o el modelo tipo children
+
+<Route>
+    <Nav props>
+<Route>

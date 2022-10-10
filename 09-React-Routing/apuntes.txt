@@ -1,0 +1,52 @@
+--> react-router-dom son una serie de Componentes, los cuales van a recibir ciertas props que le van cambiar el comportamiento. La idea entonces será tener un Componente principal que se va a cargar en nuestra página ( la única que vamos a tener ), y este se encargará de llamar a nuestro Componentes que querramos mostrar según a donde navegue el usuario. Por ejemplo:
+
+ReactDOM.render((
+  <HashRouter>
+    <Route path="/" component={Home} />
+  </HashRouter>
+), document.getElementById('root'));
+
+instalar react-router-dom en nuestro proyecto con $ npm install --save react-router-dom.
+
+Luego, vamos a importar los Componentes que necesitamos:
+
+import { HashRouter, Route } from 'react-router-dom'; 
+
+Primero vemos que vamos a envolver todo en un Componente llamador BrowserRouter. Dentro de BrowserRouter, vamos a agregar nuestras rutas. En este caso agregamos dos, usando <Route>. A este Componente hay que pasarle dos propiedades:
+
+path: Es el path de la url que va a activar esta ruta.
+component: Es el componente que se va a cargar cuando ingresemos a la ruta definida en el path.
+exact: Agregamos esta keyword para que matchee exactamente con el path que le pasamos. Este parametro entra en juego cuando tenemos path anidados.
+
+////LINK
+
+ Componente de react-router-dom llamado Link. La primera razón es que si por alguna razón dejamos de usar BrowserRouter, probablemente (no es seguro) nuestros links dejarían de funcionar, la segunda es que los Links de react-router-dom no producen un 'refresh' en nuestra pagina como lo hacen los hag <a>
+
+ import React from 'react';
+import { Link } from 'react-router-dom';
+
+function Home(){
+    return (
+      <div>
+        Hola, Soy Henry!!
+        <a href='#/lista'>Link normal a Lista</a>
+        <Link to='/lista'>Link de react-router a Lista</Link>
+        <Link to='/'>Link de react-router a Home</Link>
+      </div>
+    )
+  }
+});
+
+
+///ESTILOS
+
+<style>
+      .active {
+        color: SpringGreen;
+        font-size: 24px;
+      }
+</style>
+
+<a href='#/lista'>Link normal a Lista</a>
+    <NavLink to='/lista' activeClassName= 'active'>Link de react-router a Lista</NavLink>
+    <NavLink to='/' activeClassName= 'active'>Link de react-router a Home</NavLink>
